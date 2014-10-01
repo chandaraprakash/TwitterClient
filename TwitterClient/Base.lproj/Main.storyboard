@@ -76,22 +76,36 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SjC-p9-g3A">
+                                                    <rect key="frame" x="145" y="64" width="16" height="22"/>
+                                                    <state key="normal" image="retweet.png">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Jy-fQ-ljN">
+                                                    <rect key="frame" x="200" y="64" width="16" height="22"/>
+                                                    <state key="normal" image="favorite.png">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="UOR-0N-8gQ" firstAttribute="leading" secondItem="NAm-Qa-Qgg" secondAttribute="leading" constant="10" id="1EH-pu-Fbh"/>
                                                 <constraint firstItem="Al2-LM-Mth" firstAttribute="leading" secondItem="UOR-0N-8gQ" secondAttribute="trailing" constant="10" id="Al2-OT-THb"/>
                                                 <constraint firstItem="Al2-LM-Mth" firstAttribute="top" secondItem="NAm-Qa-Qgg" secondAttribute="top" constant="10" id="BLF-Tt-Vih"/>
+                                                <constraint firstItem="SjC-p9-g3A" firstAttribute="top" secondItem="Al2-LM-Mth" secondAttribute="bottom" constant="4" id="D8m-Xp-3gF"/>
                                                 <constraint firstItem="Al2-LM-Mth" firstAttribute="leading" secondItem="UOR-0N-8gQ" secondAttribute="trailing" constant="10" id="FRz-aO-aIT"/>
+                                                <constraint firstAttribute="bottom" secondItem="SjC-p9-g3A" secondAttribute="bottom" constant="8.5" id="dXo-lM-SQP"/>
                                                 <constraint firstItem="U7r-Vr-H8g" firstAttribute="top" secondItem="Al2-LM-Mth" secondAttribute="bottom" constant="4" id="fc3-yZ-yY2"/>
                                                 <constraint firstItem="UOR-0N-8gQ" firstAttribute="top" secondItem="NAm-Qa-Qgg" secondAttribute="top" constant="10" id="nFP-vJ-tIq"/>
                                                 <constraint firstAttribute="trailing" secondItem="Al2-LM-Mth" secondAttribute="trailing" constant="10" id="u1e-Sm-0h6"/>
                                                 <constraint firstAttribute="bottom" secondItem="U7r-Vr-H8g" secondAttribute="bottom" constant="4" id="uxc-Uu-YPc"/>
+                                                <constraint firstItem="7Jy-fQ-ljN" firstAttribute="top" secondItem="Al2-LM-Mth" secondAttribute="bottom" constant="4" id="vmw-EC-4Cq"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="profileThumbView" destination="UOR-0N-8gQ" id="C4P-yB-ygZ"/>
                                             <outlet property="tweetTextLabel" destination="Al2-LM-Mth" id="yTf-Zs-vB9"/>
-                                            <segue destination="SlA-jH-mqC" kind="push" id="jS6-Sa-Wvt"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -190,7 +204,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="337"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="decimalPad"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -286,6 +300,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="favorite.png" width="16" height="16"/>
         <image name="reply.png" width="16" height="16"/>
+        <image name="retweet.png" width="16" height="16"/>
     </resources>
 </document>

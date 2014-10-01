@@ -76,17 +76,7 @@ class TwitterViewController: UIViewController, UITableViewDataSource, UITableVie
         return cell
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var detailViewController = segue.destinationViewController as TweetDetailViewController
-
-        self.tweetsTableView.deselectRowAtIndexPath(tweetsTableView.indexPathForSelectedRow()!, animated: false)
-        var index = tweetsTableView.indexPathForSelectedRow()!.row
-        var selectedTweet = self.tweets[index]
-        detailViewController.tweet = selectedTweet
-        //destinationViewController.indexPathRow = index
-        //destinationViewController.delegate = self
-        
-    }
+    
     
     
 
