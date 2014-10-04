@@ -13,6 +13,7 @@ class TwitterViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var tweetsTableView: UITableView!
     
     var tweets = [Tweet]()
+    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,12 @@ class TwitterViewController: UIViewController, UITableViewDataSource, UITableVie
         self.navigationController!.navigationBar.barStyle = UIBarStyle.BlackTranslucent
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController!.navigationBar.barTintColor = UIColor(red: 85.0/255.0, green: 172.0/255.0, blue: 238.0/255.0, alpha: 1.0)
+        
+        //refresh control
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+        self.tweetsTableView.addSubview(refreshControl)
         
         TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> () in
             self.tweets = tweets!
@@ -44,16 +51,19 @@ class TwitterViewController: UIViewController, UITableViewDataSource, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+    func refresh(refreshControl: UIRefreshControl) {
+        var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.labelText = "loading tweets.."
+        hud.show(true)
+        
+        TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> () in
+            self.tweets = tweets!
+            self.tweetsTableView.reloadData()
+            self.refreshControl.endRefreshing()
+            MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+        })
+
     }
-    */
     
     @IBAction func onLogoutAction(sender: AnyObject) {
         User.currentUser?.logout()
@@ -63,6 +73,49 @@ class TwitterViewController: UIViewController, UITableViewDataSource, UITableVie
         var vc = storyboard?.instantiateViewControllerWithIdentifier("NewTweetNavigationController") as UIViewController
         self.presentViewController(vc, animated: true, completion: nil)
     }
+    
+    
+    @IBAction func onReplyAction(sender: AnyObject) {
+        var indexPath = sender.tag
+        var vc = storyboard?.instantiateViewControllerWithIdentifier("NewTweetViewController") as NewTweetViewController
+        //vc.rep
+    }
+    
+    
+    @IBAction func onFavouriteAction(sender: AnyObject) {
+        var indexPathRow = sender.tag
+        var tweet = tweets[indexPathRow]
+        Tweet.favourite(tweet.id!, completion: { (error: NSError?) -> Void in
+            if(error != nil) {
+                println("TwitterViewController: Favourite Failed")
+                tweet.favorited! = 0
+            } else {
+                println("TwitterViewController: Favourite Success!!")
+                tweet.favorited! = 1
+                self.tweets[indexPathRow] = tweet
+                var cell = self.tweetsTableView.cellForRowAtIndexPath(NSIndexPath(forRow: indexPathRow, inSection: 0)) as TweetCell
+                cell.tweet = tweet
+            }
+        })
+    }
+    
+    @IBAction func onRetweetAction(sender: AnyObject) {
+        var indexPathRow = sender.tag
+        var tweet = tweets[indexPathRow]
+        Tweet.reTweet(tweet.id!, completion: {(error: NSError?) -> Void in
+            if(error != nil) {
+                println("TwitterViewController: retweet Failed..")
+                tweet.retweeted! = 0
+            } else {
+                println("TwitterViewController: retweet Success..")
+                tweet.retweeted! = 1
+                self.tweets[indexPathRow] = tweet
+                var cell = self.tweetsTableView.cellForRowAtIndexPath(NSIndexPath(forRow: indexPathRow, inSection: 0)) as TweetCell
+                cell.tweet = tweet
+            }
+        })
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var rowsCount = self.tweets.count
         return rowsCount
@@ -77,7 +130,30 @@ class TwitterViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     
+    override func prepareForSegue(segue: (UIStoryboardSegue!), sender: AnyObject!) {
+        self.view.endEditing(true)
+        if(segue.identifier == "TweetDetailSegue") {
+            println("Tweet Detail View Controller rendered..")
+            var vc = segue.destinationViewController as UINavigationController
+            if(vc.viewControllers[0] is TweetDetailViewController) {
+                var destinaionVC = vc.viewControllers[0] as TweetDetailViewController
+                let indexPath = self.tweetsTableView.indexPathForSelectedRow()?.row
+                destinaionVC.tweet = self.tweets[indexPath!]
+            }
+        } else if(segue.identifier == "NewTweetSegue") {
+            println("NewTweet View Controller rendered..")
+            var vc = segue.destinationViewController as UINavigationController
+            if(vc.viewControllers[0] is NewTweetViewController) {
+                var destinaionVC = vc.viewControllers[0] as NewTweetViewController
+                let indexPath = self.tweetsTableView.indexPathForSelectedRow()?.row
+                //destinaionVC.us
+            }
+
+        }
+    }
     
+    
+    //
     
 
 }

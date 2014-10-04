@@ -9,7 +9,9 @@
 import UIKit
 
 class NewTweetViewController: UIViewController {
-
+    
+    var replyTweet: Tweet?
+    
     @IBOutlet weak var newTweetTextView: UITextView!
     override func viewDidLoad() {
         println("NewTweetViewController view rendered")
