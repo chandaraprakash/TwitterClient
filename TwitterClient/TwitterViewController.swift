@@ -146,7 +146,20 @@ class TwitterViewController: UIViewController, UITableViewDataSource, UITableVie
             if(vc.viewControllers[0] is NewTweetViewController) {
                 var destinaionVC = vc.viewControllers[0] as NewTweetViewController
                 let indexPath = self.tweetsTableView.indexPathForSelectedRow()?.row
-                //destinaionVC.us
+//                destinaionVC.replyTweet = self.tweets[0]
+            }
+
+        } else if(segue.identifier == "ReplyTweetSegue") {
+            println("ReplyTweet View Controller rendered..")
+            var vc = segue.destinationViewController as UINavigationController
+            if(vc.viewControllers[0] is NewTweetViewController) {
+                var destinaionVC = vc.viewControllers[0] as NewTweetViewController
+//                let indexPath = self.tweetsTableView.indexPathForSelectedRow()?.row
+                println("1: \(self.tweetsTableView.indexPathForSelectedRow()?.row)")
+                var indexPath = sender.tag
+                println("2: \(indexPath)")
+                destinaionVC.replyTweet = self.tweets[indexPath]
+                //destinaionVC.newTweetTextView.text = "@\(self.tweets[indexPath!].user?.screenName)"
             }
 
         }

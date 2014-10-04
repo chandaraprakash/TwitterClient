@@ -20,7 +20,7 @@ class TweetCell: UITableViewCell {
     var tweet: Tweet! {
         willSet(newTweet) {
             self.nameLabel.text = newTweet.user?.name
-            self.screenNameLabel.text = "@\(newTweet.user?.screenName)"
+            self.screenNameLabel.text = "@\((newTweet.user?.screenName)!)"
             self.tweetTextLabel?.text = newTweet.text
             self.profileThumbView.setImageWithURL(NSURL(string: newTweet.user!.profileImgeUrl! as NSString))
             profileThumbView.layer.cornerRadius = 5;

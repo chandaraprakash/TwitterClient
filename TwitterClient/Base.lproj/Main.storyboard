@@ -76,7 +76,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="onReplyAction:" destination="RIw-l4-e29" eventType="touchUpInside" id="BOL-Cn-8Z7"/>
+                                                        <segue destination="gzR-3r-56u" kind="presentation" identifier="ReplyTweetSegue" id="nhx-2o-Tej"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SjC-p9-g3A">
@@ -115,11 +115,13 @@
                                                 <constraint firstItem="Al2-LM-Mth" firstAttribute="leading" secondItem="UOR-0N-8gQ" secondAttribute="trailing" constant="10" id="Al2-OT-THb"/>
                                                 <constraint firstItem="SjC-p9-g3A" firstAttribute="top" secondItem="Al2-LM-Mth" secondAttribute="bottom" constant="4" id="D8m-Xp-3gF"/>
                                                 <constraint firstItem="Al2-LM-Mth" firstAttribute="leading" secondItem="UOR-0N-8gQ" secondAttribute="trailing" constant="10" id="FRz-aO-aIT"/>
+                                                <constraint firstItem="Oqf-wV-RSV" firstAttribute="top" secondItem="NAm-Qa-Qgg" secondAttribute="top" constant="10" id="XHU-EK-9xo"/>
                                                 <constraint firstAttribute="bottom" secondItem="SjC-p9-g3A" secondAttribute="bottom" constant="8.5" id="dXo-lM-SQP"/>
                                                 <constraint firstItem="U7r-Vr-H8g" firstAttribute="top" secondItem="Al2-LM-Mth" secondAttribute="bottom" constant="4" id="fc3-yZ-yY2"/>
                                                 <constraint firstItem="Al2-LM-Mth" firstAttribute="top" secondItem="qzH-eH-HRX" secondAttribute="bottom" constant="6" id="gtP-7g-Mu5"/>
                                                 <constraint firstItem="Al2-LM-Mth" firstAttribute="top" secondItem="Oqf-wV-RSV" secondAttribute="bottom" constant="6" id="jlJ-SS-zEB"/>
                                                 <constraint firstItem="UOR-0N-8gQ" firstAttribute="top" secondItem="NAm-Qa-Qgg" secondAttribute="top" constant="10" id="nFP-vJ-tIq"/>
+                                                <constraint firstItem="qzH-eH-HRX" firstAttribute="top" secondItem="NAm-Qa-Qgg" secondAttribute="top" constant="13" id="tvU-Ok-bJp"/>
                                                 <constraint firstAttribute="trailing" secondItem="Al2-LM-Mth" secondAttribute="trailing" constant="10" id="u1e-Sm-0h6"/>
                                                 <constraint firstAttribute="bottom" secondItem="U7r-Vr-H8g" secondAttribute="bottom" constant="4" id="uxc-Uu-YPc"/>
                                                 <constraint firstItem="7Jy-fQ-ljN" firstAttribute="top" secondItem="Al2-LM-Mth" secondAttribute="bottom" constant="4" id="vmw-EC-4Cq"/>
@@ -241,11 +243,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bk9-Kf-4nu">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="337"/>
+                                <rect key="frame" x="0.0" y="130" width="600" height="207"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qjo-Qr-QGb">
+                                <rect key="frame" x="16" y="72" width="50" height="50"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -277,11 +282,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="newTweetTextView" destination="Bk9-Kf-4nu" id="Ehn-IJ-qKH"/>
+                        <outlet property="profileThumbView" destination="qjo-Qr-QGb" id="Yaa-yZ-xZx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3IS-uK-Uur" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3281" y="406"/>
+            <point key="canvasLocation" x="3281" y="407"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bBI-Dy-sTb">
@@ -345,4 +351,7 @@
         <image name="retweet.png" width="16" height="16"/>
         <image name="sign-in-with-twitter-gray.png" width="158" height="28"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="4bs-4X-eNW"/>
+    </inferredMetricsTieBreakers>
 </document>

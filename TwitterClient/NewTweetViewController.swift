@@ -13,6 +13,8 @@ class NewTweetViewController: UIViewController {
     var replyTweet: Tweet?
     
     @IBOutlet weak var newTweetTextView: UITextView!
+    @IBOutlet weak var profileThumbView: UIImageView!
+    
     override func viewDidLoad() {
         println("NewTweetViewController view rendered")
         super.viewDidLoad()
@@ -23,6 +25,27 @@ class NewTweetViewController: UIViewController {
         self.navigationController!.navigationBar.barStyle = UIBarStyle.BlackTranslucent
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController!.navigationBar.barTintColor = UIColor(red: 85.0/255.0, green: 172.0/255.0, blue: 238.0/255.0, alpha: 1.0)
+        
+        if let url = User.currentUser?.profileImgeUrl {
+            //profileImage.setImageWithURL(NSURL(string: url))
+            var request = NSURLRequest(URL: NSURL(string: url))
+            profileThumbView.setImageWithURLRequest(request, placeholderImage: nil ,
+                success: { (request, response, image) -> Void in
+                    //println(response)
+                    self.profileThumbView.image = image
+                    var layer = self.profileThumbView.layer as CALayer
+                    layer.cornerRadius = 8.0
+                    layer.masksToBounds = true
+                }, failure: { (request, response, error) -> Void in
+                    println(error)
+            })
+        }
+        
+        if let screen_name = replyTweet?.user?.screenName {
+            newTweetTextView.text = "@\(screen_name) "
+        }
+
+        //newTweetTextView.text = replyTweet!.text!
         
     }
 
