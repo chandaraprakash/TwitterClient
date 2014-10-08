@@ -14,6 +14,7 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var profileThumbView: UIImageView!
     @IBOutlet weak var favouriteButton: UIButton!
     @IBOutlet weak var retweetButton: UIButton!
+    @IBOutlet weak var replyButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var screenNameLabel: UILabel!
     
@@ -46,6 +47,7 @@ class TweetCell: UITableViewCell {
                 var retweetButtonImage = UIImage(named: "retweet.png") as UIImage
                 self.retweetButton.setImage(retweetButtonImage, forState: UIControlState.Normal)
             }
+            
         }
         
     }

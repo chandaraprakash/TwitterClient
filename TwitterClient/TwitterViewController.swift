@@ -46,6 +46,10 @@ class TwitterViewController: UIViewController, UITableViewDataSource, UITableVie
         //tweetsTableView.rowHeight = UITableViewAutomaticDimension
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        self.tweetsTableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
