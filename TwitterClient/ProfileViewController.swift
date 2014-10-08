@@ -16,6 +16,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var profileImageThumbView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var screenNameLabel: UILabel!
+    @IBOutlet weak var tweetsCountLabel: UILabel!
+    @IBOutlet weak var followingCountLabel: UILabel!
+    @IBOutlet weak var followersCountLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -36,9 +39,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.nameLabel.text = user?.name
         self.screenNameLabel.text = "@\((user?.screenName)!)"
-        self.profileImageThumbView.setImageWithURL(NSURL(string: user!.profileImgeUrl! as NSString))
+        self.profileImageThumbView.setImageWithURL(NSURL(string: "http://pbs.twimg.com/profile_images/3076366984/4cd3d6bc27d320294cb6ebffc90ae333.jpeg"))
         profileImageThumbView.layer.cornerRadius = 5;
         profileImageThumbView.clipsToBounds = true;
+        self.tweetsCountLabel.text = user?.tweetsCount
+        self.followingCountLabel.text = user?.followingCount
+        self.followersCountLabel.text = user?.followersCount
         
         println("user!.screenName! ------>>>> \(user!.screenName!)")
         TwitterClient.sharedInstance.getUserTimeline(user!.screenName!, completion: { (tweets, error) -> () in

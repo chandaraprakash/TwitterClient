@@ -21,12 +21,20 @@ class User: NSObject {
     var tagLine: String?
     var dictionary: NSDictionary?
     
+    var tweetsCount: String?
+    var followingCount: String?
+    var followersCount: String?
+    
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
         name = dictionary["name"] as? String
         screenName = dictionary["screen_name"] as? String
         profileImgeUrl = dictionary["profile_image_url"] as? String
         tagLine = dictionary["description"] as? String
+        
+        tweetsCount = dictionary["statuses_count"] as? String
+        followingCount = dictionary["friends_count"] as? String
+        followersCount = dictionary["followers_count"] as? String
     }
     
     class var currentUser: User? {
