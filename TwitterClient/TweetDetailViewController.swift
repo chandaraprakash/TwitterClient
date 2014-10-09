@@ -12,13 +12,18 @@ class TweetDetailViewController: UIViewController {
 
     @IBOutlet weak var detailTweetText: UILabel!
     @IBOutlet weak var detailThumView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var screenNameLabel: UILabel!
     
     var tweet: Tweet?
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         detailThumView.setImageWithURL(NSURL(string: tweet!.user!.profileImgeUrl!))
         detailTweetText.text = tweet!.text!
+        nameLabel.text = user?.name
+        screenNameLabel.text = user?.screenName
     }
 
     override func didReceiveMemoryWarning() {
