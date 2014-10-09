@@ -18,7 +18,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kve-9X-RuI">
                                 <rect key="frame" x="79" y="286" width="213" height="28"/>
-                                <state key="normal" image="sign-in-with-twitter-gray.png">
+                                <state key="normal" image="sign-in-with-twitter-gray">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -414,7 +414,7 @@
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7r-Vr-H8g">
                                                     <rect key="frame" x="64" y="87" width="23" height="22"/>
-                                                    <state key="normal" image="reply.png">
+                                                    <state key="normal" image="reply">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -423,7 +423,7 @@
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SjC-p9-g3A">
                                                     <rect key="frame" x="126" y="87" width="16" height="22"/>
-                                                    <state key="normal" image="retweet.png">
+                                                    <state key="normal" image="retweet">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -432,7 +432,7 @@
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Jy-fQ-ljN">
                                                     <rect key="frame" x="181" y="87" width="16" height="22"/>
-                                                    <state key="normal" image="favorite.png">
+                                                    <state key="normal" image="favorite">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -739,10 +739,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="favorite.png" width="16" height="16"/>
-        <image name="reply.png" width="16" height="16"/>
-        <image name="retweet.png" width="16" height="16"/>
-        <image name="sign-in-with-twitter-gray.png" width="158" height="28"/>
+        <image name="favorite" width="16" height="16"/>
+        <image name="reply" width="16" height="16"/>
+        <image name="retweet" width="16" height="16"/>
+        <image name="sign-in-with-twitter-gray" width="158" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="4bs-4X-eNW"/>
